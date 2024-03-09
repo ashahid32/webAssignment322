@@ -29,17 +29,8 @@
 <!-- linkage for daisy element:  https://daisyui.com/components/table/  -->
 <div class="overflow-x-auto">
     <table class="table">
-      
-      <thead>
-        <tr class="bg-base-200">
-          <th>Picture</th>
-          <th>Country Name</th>
-          <th>Region</th>
-          <th>Number of Population</th>
-          <th>Capital</th>
-          <th>More Details</th>
-        </tr>
-      </thead>
+  
+     
       <tbody>
        <!-- for each country-->
        <% countries.forEach(element=>{ %> 
@@ -50,13 +41,11 @@
             </div>            
           </div>
         </td>
-          <td><%= element.name %></td>
-          <td> <a href="/un/countries?region=<%= element.region.name%>"><button class="btn btn-accent btn-outline"><%= element.region.name %></button></a></td>
-              
-
+          <td><%= element.name %><a href="/un/countries?region=<%= element.region.name%>">
+            <button class="btn btn-accent btn-outline style="margin-left: 10px;"><%= element.region.name %></button></a></td>
           <td><%= element.population %></td>
-          <td><%= element.capital %></td>
-          <td><a href="/un/countries/<%= element.a2code %>" ><button class="btn btn-outline btn-info">details</button></a></td>
+          <td><%= element.capital %><a href="/un/countries/<%= element.a2code %>" >
+            <button class="btn btn-outline btn-info style="margin-left: 10px;">details</button></a></td>
         </tr>
       <% }) %>
        
