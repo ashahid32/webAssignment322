@@ -31,27 +31,27 @@
     <table class="table">
       
       <thead>
-        <tr>
-          <th>Flag</th>
-          <th>Name</th>
+        <tr class="bg-base-200">
+          <th>Picture</th>
+          <th>Country Name</th>
           <th>Region</th>
-          <th>Population</th>
+          <th>Number of Population</th>
           <th>Capital</th>
-          <th>Details</th>
+          <th>More Details</th>
         </tr>
       </thead>
       <tbody>
        <!-- for each country-->
-       <% countries.forEach(element=>{ %>
-        <tr>
+       <% countries.forEach(element=>{ %> 
+        <tr class="hover">
           <td><div class="flex items-center gap-3">
-            <div class="avatar">  
+            <div class="custom-avatar">  
                 <img src= <%= element.flag %> alt= <%= element.name %> />
             </div>            
           </div>
         </td>
           <td><%= element.name %></td>
-          <td> <a href="/un/countries?region=<%= element.region.name%>"><button class="btn btn-outline btn-success"><%= element.region.name %></button></a></td>
+          <td> <a href="/un/countries?region=<%= element.region.name%>"><button class="btn btn-accent btn-outline"><%= element.region.name %></button></a></td>
               
 
           <td><%= element.population %></td>
