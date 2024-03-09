@@ -4,16 +4,17 @@
 *  of this assignment has been copied manually or electronically from any other source 
 *  (including 3rd party web sites) or distributed to other students.
 * 
-*  Name: ___Jianzhong Ding___________________ Student ID: ____102212230__________ Date: ____Mar 2, 2024____________
+*  Name: ___Ayesha Shahid___ Student ID: 145688222 Date: Mar 8, 2024
 *
-*  Online (Cyclic) Link: https://uptight-ant-pantsuit.cyclic.app/
+*  Online (Cyclic) Link: https://aggressive-calf-jodhpurs.cyclic.app
 *
 ********************************************************************************/
 const unCountryData = require("./modules/unCountries");
 const path = require("path");
-
 const express = require('express');
 const app = express();
+
+
 
 const HTTP_PORT = process.env.PORT || 8080;
 
@@ -25,7 +26,6 @@ app.use((req,res,next)=>{
 });
 
 app.get('/', (req, res) => {
-    // res.send('Assignment 2:  Student Name - Student Id');
     res.render("home");
 });
 
@@ -33,27 +33,25 @@ app.get('/about', (req, res) => {
   res.render('about');
 });
 
-//to be deleted
+
 app.get('/countries', (req, res) => {
   res.render('countries');
 });
 
-//to be deleted
+
 app.get('/country', (req, res) => {
   res.render('country');
 });
 
 app.get("/un/countries", async (req,res)=>{
-  // let countries = await unCountryData.getAllCountries();
-  // res.send(countries);
+ 
   try{
     if(req.query.region){
       let countries = await unCountryData.getCountriesByRegion(req.query.region);
       let {region} = req.query;
       region = region.charAt(0).toUpperCase() + region.slice(1);
       if(countries.length)res.render("countries", {region, countries});
-    //  else throw new Error("No Countries found for a matching region!!")
-      else res.status(404).render("404", {message: "No Countries found for a matching region!"}) //alternate solution
+      else res.status(404).render("404", {message: "No Countries found for a matching region!"}) 
   
     }else{
       let countries = await unCountryData.getAllCountries();
@@ -66,22 +64,24 @@ app.get("/un/countries", async (req,res)=>{
 
 });
 
-app.get("/un/countries/:code", async (req,res)=>{
-  try{
-    let country = await unCountryData.getCountryByCode(req.params.code);
-    res.render("country", {country});
-   
-  }catch(err){
-    res.render("404", {message: err});
+app.get("/un/countries/:code", async (req, res) => {
+  try {
+    const country = await unCountryData.getCountryByCode(req.params.code);
+    res.render("country", { country });
+  } catch (error) {
+    res.render("404", { message: error });
   }
 });
 
 
+
 app.use((req, res, next) => {
-  res.status(404).render("404", {message: "I'm sorry, we're unable to find what you're looking for"});
+  res.status(404).render("404",
+   {message: "I'm sorry, we're unable to find what you're looking for"});
 });
 
 unCountryData.initialize().then(()=>{
-  app.listen(HTTP_PORT, () => { console.log(`server listening on: ${HTTP_PORT}`) });
+  app.listen(HTTP_PORT, () => 
+  { console.log(`server listening on: ${HTTP_PORT}`) });
 });
 
