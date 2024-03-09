@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UN Countries</title>
+  <link rel="stylesheet" href="/css/main.css" />
+
+</head>
+
+<body tabindex="-1">
+  
+  <%- include('partials/navbar', {page:'countries'}) %>
+
+  <div class="container mx-auto">
+    <div class="hero bg-base-200 rounded-lg p-6">
+      <div class="hero-content text-center ">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold"> <%= region %> Countries</h1>
+
+          <p class="py-6">Browse countries, i.e., United Nations member states. Click the buttons to see more.</p>
+        </div>
+      </div>
+    </div>
+
+    <br />
+<!-- table copied from daisyUI starts here -->
+<!-- linkage for daisy element:  https://daisyui.com/components/table/  -->
+<div class="overflow-x-auto">
+    <table class="table">
+      <!-- head -->
+      <thead>
+        <tr>
+          <th>Flag</th>
+          <th>Name</th>
+          <th>Region</th>
+          <th>Population</th>
+          <th>Capital</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+       <!-- for each country-->
+       <% countries.forEach(element=>{ %>
+        <tr>
+          <td><div class="flex items-center gap-3">
+            <div class="avatar">  
+                <img src= <%= element.flag %> alt= <%= element.name %> />
+            </div>            
+          </div>
+        </td>
+          <td><%= element.name %></td>
+          <td> <a href="/un/countries?region=<%= element.region.name%>"><button class="btn btn-outline btn-success"><%= element.region.name %></button></a></td>
+              
+
+          <td><%= element.population %></td>
+          <td><%= element.capital %></td>
+          <td><a href="/un/countries/<%= element.a2code %>" ><button class="btn btn-outline btn-info">details</button></a></td>
+        </tr>
+      <% }) %>
+       
+       
+        
+      </tbody>
+   
+      
+    </table>
+  </div>
+      <!-- table copied from daisyUI ends here -->
+
+
+
+</body>
+
+</html>
