@@ -52,12 +52,11 @@ app.get("/un/countries", async (req,res)=>{
       let {region} = req.query;
       region = region.charAt(0).toUpperCase() + region.slice(1);
       if(countries.length)res.render("countries", {region, countries});
-      else throw new Error("No Countries found for a matching region!!")
-      //else res.status(404).render("404", {message: "No Countries found for a matching region!"}) //alternate solution
+    //  else throw new Error("No Countries found for a matching region!!")
+      else res.status(404).render("404", {message: "No Countries found for a matching region!"}) //alternate solution
   
     }else{
       let countries = await unCountryData.getAllCountries();
-      //res.json(countries);
       let region = req.query.region;
       res.render("countries", { region: "All ", countries});
     }
@@ -77,17 +76,8 @@ app.get("/un/countries/:code", async (req,res)=>{
   }
 });
 
-// app.get("/un/countries/region-demo", async (req,res)=>{
-//   try{
-//     let countries = await unCountryData.getCountriesByRegion("Oceania");
-//     res.send(countries);
-//   }catch(err){
-//     res.send(err);
-//   }
-// });
 
 app.use((req, res, next) => {
-  //res.status(404).render('404');
   res.status(404).render("404", {message: "I'm sorry, we're unable to find what you're looking for"});
 });
 

@@ -1,6 +1,6 @@
 const countryData = require("../data/countryData");
 const regionData = require("../data/regionData");
-
+  
 let countries = [];
 
 function initialize() {
@@ -13,7 +13,7 @@ function initialize() {
   });
 
 }
-
+ 
 function getAllCountries() {
   return new Promise((resolve, reject) => {
     resolve(countries);
@@ -40,10 +40,10 @@ function getCountriesByRegion(region) {
   return new Promise((resolve, reject) => {
     let foundCountries = countries.filter(c => c.region.name.toUpperCase().includes(region.toUpperCase()));
 
-    if (foundCountries.length) {
+    if (foundCountries) {
       resolve(foundCountries)
     } else {
-      reject("No Countries found for a matching region!!");
+      reject("Unable to find requested countries");
     }
 
   });
