@@ -25,27 +25,37 @@
     </div>
 
     <br />
-<!-- table copied from daisyUI starts here -->
-<!-- linkage for daisy element:  https://daisyui.com/components/table/  -->
-<div class="overflow-x-auto">
+
+    <div class="overflow-x-auto">
     <table class="table">
-  
-     
+      <!-- head -->
+      <thead>
+        <tr>
+          <th>Flag</th>
+          <th>Name</th>
+          <th>Region</th>
+          <th>Population</th>
+          <th>Capital</th>
+          <th>Details</th>
+        </tr>
+      </thead>
       <tbody>
        <!-- for each country-->
-       <% countries.forEach(element=>{ %> 
-        <tr class="hover">
+       <% countries.forEach(element=>{ %>
+        <tr>
           <td><div class="flex items-center gap-3">
-            <div class="custom-avatar">  
+            <div class="avatar">  
                 <img src= <%= element.flag %> alt= <%= element.name %> />
             </div>            
           </div>
         </td>
-          <td><%= element.name %><a href="/un/countries?region=<%= element.region.name%>">
-            <button class="btn btn-accent btn-outline style="margin-left: 10px;"><%= element.region.name %></button></a></td>
+          <td><%= element.name %></td>
+          <td> <a href="/un/countries?region=<%= element.Region.name%>"><button class="btn btn-outline btn-success"><%= element.Region.name %></button></a></td>
+              
+
           <td><%= element.population %></td>
-          <td><%= element.capital %><a href="/un/countries/<%= element.a2code %>" >
-            <button class="btn btn-outline btn-info style="margin-left: 10px;">details</button></a></td>
+          <td><%= element.capital %></td>
+          <td><a href="/un/countries/<%= element.a2code %>" ><button class="btn btn-outline btn-info">details</button></a></td>
         </tr>
       <% }) %>
        
