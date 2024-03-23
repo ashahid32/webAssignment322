@@ -53,7 +53,7 @@
         <p><strong>Country Name: </strong><%= country.name %></p>
         <p><strong>Official Name: </strong><%= country.official %></p>
         <p><strong>Native Name: </strong><%= country.nativeName %></p>
-        <p><strong>Region: </strong><%= country.region.name %></p>
+        <p><strong>Region: </strong><%= country.Region.name %></p>
         <p><strong>Alpha 2 Code: </strong><%= country.a2code %></p>
         <p><strong>Capital: </strong><%= country.capital %></p>
         <p><strong>Population: </strong><%= country.population %></p>
@@ -63,7 +63,7 @@
   
         
         <a href="#" onclick="history.back(); return false;"><button class="btn btn-outline btn-success">return</button></a>
-
+        <a href="/un/editCountry/<%= country.a2code %>" ><button class="btn btn-outline btn-primary">Edit</button></a>
       </div>
 
     </div>
